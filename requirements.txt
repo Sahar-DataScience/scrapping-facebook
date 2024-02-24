@@ -1,3 +1,4 @@
 facebook-page-scraper
 webdriver-manager==4.0.1
 mysql-connector-python
+"fastapi[all]"
