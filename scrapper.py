@@ -13,8 +13,8 @@ timeout = 60 #600 seconds
 headless = False
 #DB credentials
 host_name = 'localhost'
-user_name = 'ubuntu'
-password_db = 'password'
+user_name = 'asus'
+password_db = "12345"
 meta_ai = Facebook_scraper(page_name, posts_count, browser, proxy=proxy, timeout=timeout, headless=headless)
 
 json_data = meta_ai.scrap_to_json()
@@ -23,15 +23,15 @@ data_dict = json.loads(json_data)
 
 
 scrapped_db = mysql.connector.connect(
-  host=host_name,  # Replace with your server's hostname or IP address
-  user=user_name,  # Replace with your database username
-  password=password_db # Replace with your database password
+  host=host_name,  
+  user=user_name,  
+  password=password_db 
 )
 
 mycursor = scrapped_db.cursor()
 
 
-sql = "CREATE DATABASE IF NOT EXISTS facebook_db"  # Replace "mydatabase" with your desired database name
+sql = "CREATE DATABASE IF NOT EXISTS facebook_db"  
 mycursor.execute(sql)
 
 
@@ -39,18 +39,18 @@ scrapped_db = mysql.connector.connect(
   host=host_name,
   user=user_name,
   password=password_db,
-  database="facebook_db"  # Specify the database name
+  database="facebook_db"  
 )
 mycursor = scrapped_db.cursor()
 
-sql = "CREATE TABLE IF NOT EXISTS  fb_page \
-    (id INT NOT NULL AUTO_INCREMENT, \
-    page_name VARCHAR(255), \
-    shares_count INT DEFAULT NULL, \
-    comments_count INT DEFAULT NULL, \
-    post_content TXT, \
-    post_date DATE, \
-    PRIMARY KEY (id))"  # Replace with your desired table and column structure
+sql = "CREATE TABLE IF NOT EXISTS fb_page ( \
+        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, \
+        page_name VARCHAR(255) NOT NULL, \
+        shares_count INT DEFAULT 0, \
+        comments_count INT DEFAULT 0, \
+        post_content TEXT, \
+        post_date DATE NOT NULL \
+        )"
 mycursor.execute(sql)
 
 for item_ in data_dict:
@@ -66,6 +66,6 @@ for item_ in data_dict:
     ]
     mycursor.executemany(sql, values)
 
-scrapped_db.commit()  # Commit the changes to the database
+scrapped_db.commit()  
 
 scrapped_db.close()
