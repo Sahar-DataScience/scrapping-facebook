@@ -1,4 +1,4 @@
-from scrapper import scrapper_function
+from app.scrapper import scrapper_function
 
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
