@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  fastapi_app:
+    container_name: fastapi_app
+    build: ./app
+    networks:
+      - fastapi_mysql_network
+    ports:
+      - 8000:8000
+    environment:
+      DB_HOST_NAME: mysql_container
+      DB_USER_NAME: asus
+      DB_PASSWORD: 12345
+      DB_NAME: facebook_db
+    depends_on:
+      - mysql_db
+
+  mysql_db:
+    image: mysql:8.0
+    container_name: mysql_container
+    build: ./mysql
+    networks:
+      - fastapi_mysql_network
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: $unshine1!
+      MYSQL_USER: "asus"
+      MYSQL_PASSWORD: 12345
+      MYSQL_DATABASE: facebook_db
+    volumes:
+      - mysql_data:/var/lib/mysql 
+volumes:
+  mysql_data: {}  #Create a volume for persistent data
+networks:
+  fastapi_mysql_network:
+    driver: bridge
+

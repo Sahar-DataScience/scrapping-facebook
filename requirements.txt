@@ -1,3 +1,0 @@
-facebook-page-scraper
-mysql-connector-python
-fastapi[all]

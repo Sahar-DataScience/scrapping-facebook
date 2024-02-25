@@ -1,5 +1,5 @@
 # 
-FROM python:3.9-slim
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.11
 
 # 
 WORKDIR /code
@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir -r /code/requirements.txt
 
 # 
 RUN pip install --no-cache-dir webdriver-manager==4.0.1
-COPY ./app /code/app
+COPY . /code/app
 
 EXPOSE 8000
 
