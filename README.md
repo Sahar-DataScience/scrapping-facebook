@@ -37,9 +37,17 @@ The images and their respective containers were built using `docker-compose up` 
     docker-compose up
     ````
 ## Results
+<p align='center'>
+<img src='https://github.com/Sahar-DataScience/scrapping-facebook/blob/main/doc/input_test.png' width='40%'/>
+<img src='https://github.com/Sahar-DataScience/scrapping-facebook/blob/main/doc/200.png' width='70%'/>
+<img src='https://github.com/Sahar-DataScience/scrapping-facebook/blob/main/doc/db.png' width='45%'/>
+<img src='https://github.com/Sahar-DataScience/scrapping-facebook/blob/main/doc/columns.png' width='45%'/>
+</p>
+
+
 
 > [!WARNING]
-> inside the app container, the scraper couldn't open chrome browser (or any other browser) although chrome web driver installed and the docker base image was pulled from selenium-standalone-chrome
+> inside the app container, the scraper couldn't open chrome browser (or any other browser) although chrome web driver installed and the docker base image was pulled from selenium-standalone-chrome [check this](https://github.com/Sahar-DataScience/scrapping-facebook/blob/main/doc/500.png)
 
 ## Troubleshooting issues 🎯
 * https://stackoverflow.com/questions/47955548/docker-image-with-python3-chromedriver-chrome-selenium
@@ -48,9 +56,10 @@ The images and their respective containers were built using `docker-compose up` 
 * https://stackoverflow.com/questions/38504257/mysql-scripts-in-docker-entrypoint-initdb-are-not-executed
   
 > [!TIP]
-> further enhancements can be applied like hiding credentials in .gitignore and .dockerignore.
-> using multistage build to lightweight the containers
-> deploy the service on cloud with cron job that makes it work every 24h for ex
+> * further enhancements can be applied like hiding credentials in .gitignore and .dockerignore.
+> * enhancing the schemas of the database.
+> * using multistage build to lightweight the containers.
+> * deploy the service on cloud with cron job that makes it work every 24h for example.
 
 ## Resources 📚
 * https://fastapi.tiangolo.com/deployment/docker/
