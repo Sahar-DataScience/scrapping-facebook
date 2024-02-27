@@ -3,6 +3,7 @@ version: "2.24.5"
 services:
   fastapi_app:
     container_name: fastapi_app
+   # image: chrome_fastapi
     build: ./app
     networks:
       - fastapi_mysql_network
@@ -15,7 +16,7 @@ services:
       DB_NAME: facebook_db
     depends_on:
       - mysql_db
-      - chrome
+#      - chrome
 
   mysql_db:
     image: mysql:8.0
@@ -33,16 +34,18 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
 
-  chrome:
-      image: selenium/standalone-chrome:latest
-      hostname: chrome
-      networks:
-        - fastapi_mysql_network
-      ports:
-        - 5900:5900
-        - 4444:4444
-      privileged: true
-      shm_size: 2g
+#  chrome:
+#      image: selenium/standalone-chrome:latest
+#      
+#      networks:
+#        - fastapi_mysql_network
+#      ports:
+#        - 5900:5900
+#        - 4444:4444
+#      privileged: true
+#      shm_size: 2g
+#      entrypoint:
+#          - chromedriver
 volumes:
   mysql_data: {}  #Create a volume for persistent data
 

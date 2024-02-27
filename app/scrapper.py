@@ -1,18 +1,7 @@
 from facebook_page_scraper import Facebook_scraper
 import json
 import mysql.connector
-"""
-#scrapper inputs
-fbpage_name = "AIatMeta"
-posts_count = 5
-browser = "chrome"
 
-#DB credentials
-host_name = 'localhost'
-user_name = 'asus'
-password_db = "12345"
-db_name = "facebook_db"
-"""
 def scrapper_function(fbpage_name, posts_count, browser, host_name, user_name, password_db, db_name):
 
   #proxy = "IP:PORT" #if proxy requires authentication then user:password@IP:PORT
